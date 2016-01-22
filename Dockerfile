@@ -1,6 +1,7 @@
 FROM debian:jessie
 
-RUN apt-get update && apt-get install -y ca-certificates git --no-install-recommends && rm -r /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y ca-certificates openssh-client git --no-install-recommends && rm -r /var/lib/apt/lists/*
+
 
 COPY git.sh /tmp/git.sh
 

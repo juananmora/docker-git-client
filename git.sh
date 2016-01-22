@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ -e "/tmp/.ssh/id_rsa" ]; then
+	cp /tmp/.ssh/id_rsa ~/.ssh/id_rsa
+	chmod 400 ~/.ssh/id_rsa
+fi
+
 if [ ${DEBUG} = TRUE ]; then
 	echo "Started GIT Client"
 fi
@@ -33,7 +38,7 @@ fi
 
 if [ ${DEBUG} = TRUE ]; then
 	echo ${CLONE_URL}
-	git clone --depth ${DEPTH} --branch ${BRANCH} ${CLONE_URL} ${GIT_ROOT} 2>&1
+	git clone --depth ${DEPTH} --branch ${BRANCH} ${CLONE_URL} ${GIT_ROOT} -vvv 2>&1
 else
 	git clone --depth ${DEPTH} --branch ${BRANCH} ${CLONE_URL} ${GIT_ROOT} > /dev/null 2>&1
 fi
